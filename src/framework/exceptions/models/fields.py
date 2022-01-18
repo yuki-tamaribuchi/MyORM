@@ -1,0 +1,2 @@
+class FieldNotInThisClassException(Exception):
+	pass
