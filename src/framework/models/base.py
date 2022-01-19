@@ -4,7 +4,7 @@ from framework.objects import Objects
 from framework.fields import IntegerField
 from framework.fields.base import FieldBase
 
-from framework.exceptions.models.fields import FieldNotInThisClassException
+from framework.exceptions.models.fields import FieldNotInThisClassException, PrimaryKeyCannotUpdateException
 
 
 
@@ -12,6 +12,8 @@ class ModelBase(object):
 
 	def __init__(self, **kwargs):
 		ModelBase.objects = Objects(self.__class__)
+
+		self.is_saved = None
 
 		self.__set_fields_to_attr()
 		self.__create_fields_list()
@@ -21,8 +23,6 @@ class ModelBase(object):
 			self.input_data = kwargs
 			self.set_values(self.input_data)
 			self.is_saved = False
-		else:
-			self.is_saved = None
 
 
 	def __set_fields_to_attr(self) ->dict:
@@ -55,10 +55,44 @@ class ModelBase(object):
 				field_instalce = getattr(self, field)
 				if field in input_data: field_instalce.set_value(value=input_data[field])
 				else: field_instalce.set_value(value=None)
+
+			self.is_saved = False
+
+			return True
+
+		return False
+
+
+	def update_values(self, update_data:dict):
+		#ネストが深すぎるため後でどうにかする
+		if self.__check_fields_in_this_class(input_data=update_data):
+			for field in self.fields_list:
+				field_instance = getattr(self, field)
+
+				#フィールドがある場合
+				if field in update_data:
+
+					#Primary Keyかを調べ、Primary Keyの場合変更させない
+					if hasattr(field_instance, "primary_key"):
+						if field_instance.primary_key:
+							raise PrimaryKeyCannotUpdateException
+
+
+					#フィールドのデータがある場合は値を変更
+					if update_data[field] is not None:
+						field_instance.set_value(value=update_data[field])
+					
+				#フィールドがない場合はパス
+				else:
+					field_instance.set_value(value=field_instance.value)
+
+			self.is_saved = False
 			return True
 		return False
 
 
+
 	def save(self):
 		self.is_saved = True
+		print("Output from save(). :", self.__dict__)
 		return True
