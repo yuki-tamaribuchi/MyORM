@@ -14,13 +14,13 @@ class ModelBase(object):
 		ModelBase.objects = Objects(self.__class__)
 		
 		if kwargs:
-			self.id = IntegerField(null=False, unique=True, auto_increment=True)
-			self.kwargs = kwargs
+			
+			self.input_data = kwargs
 			self.is_saved = False
 
 			self.__set_fields_to_attr()
 			self.__create_fields_list()
-			self.__set_values()
+			self.set_values(self.input_data)
 			
 		else:
 			self.is_saved = None
@@ -41,8 +41,8 @@ class ModelBase(object):
 		return True
 
 
-	def __check_fields_in_this_class(self) ->bool:
-		for k in self.kwargs.keys():
+	def __check_fields_in_this_class(self, input_data:dict) ->bool:
+		for k in input_data.keys():
 			if k in self.fields_list:
 				pass
 			else:
@@ -50,11 +50,11 @@ class ModelBase(object):
 		return True
 
 
-	def __set_values(self):
+	def set_values(self, input_data:dict):
 		if self.__check_fields_in_this_class():
 			for field in self.fields_list:
 				field_instalce = getattr(self, field)
-				if field in self.kwargs: field_instalce.set_value(value=self.kwargs[field])
+				if field in input_data: field_instalce.set_value(value=self.input_data[field])
 				else: field_instalce.set_value(value=None)
 			return True
 		return False
