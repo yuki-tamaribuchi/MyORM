@@ -1,6 +1,6 @@
 from ..base import FieldBase
 
-from framework.exceptions.fields.base import AutoIncrementButNullException
+from framework.exceptions.fields.base import PrimaryKeyValidationException
 
 class IntegerField(FieldBase):
 
@@ -10,16 +10,18 @@ class IntegerField(FieldBase):
 		self,
 		null: bool,
 		unique: bool,
-		auto_increment: bool=False,
+		primary_key: bool = False,
 		*args,
 		**kwargs
 		) -> None:
 
 		super().__init__(null, unique, *args, **kwargs)
-		self.auto_increment = auto_increment
+		self.primary_key = primary_key
 
 	def validate(self, value) -> bool:
-		if super().validate(value):
-			if self.auto_increment and value is None:
-				raise AutoIncrementButNullException
-			return True
+		if not super().validate(value):
+			return False
+
+		if self.primary_key and value is not None:
+			raise PrimaryKeyValidationException
+		return True
