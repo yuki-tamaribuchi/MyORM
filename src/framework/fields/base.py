@@ -39,3 +39,23 @@ class FieldBase(object):
 		if self.validate(value):
 			self.value = value
 		return True
+	
+
+	def field_sql(self):
+		sql_template = "{null_option}{unique_option}"
+
+		if not self.null:
+			null_option = "NOT NULL "
+		else:
+			null_option = ""
+
+		if self.unique:
+			unique_option = "UNIQUE"
+		else:
+			unique_option = ""
+		
+		sql = sql_template.format(
+			null_option=null_option,
+			unique_option=unique_option
+		)
+		return sql
