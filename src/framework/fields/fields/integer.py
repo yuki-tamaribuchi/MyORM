@@ -31,3 +31,18 @@ class IntegerField(FieldBase):
 		else:
 			super().validate(value)
 		return True
+
+	def field_sql(self):
+		super_sql = super().field_sql()
+		sql_template = " {auto_increment}"
+
+		if self.primary_key:
+			auto_increment = "AUTO_INCREMENT "
+		else:
+			auto_increment = ""
+
+		sql ="INT " + super_sql + sql_template.format(
+			auto_increment=auto_increment
+		)
+
+		return sql
