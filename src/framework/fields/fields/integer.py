@@ -1,7 +1,8 @@
-from wsgiref import validate
 from ..base import FieldBase
 
 from framework.exceptions.fields.base import PrimaryKeyValidationException, NotNullValidationException
+
+
 
 class IntegerField(FieldBase):
 
@@ -30,12 +31,3 @@ class IntegerField(FieldBase):
 		else:
 			super().validate(value)
 		return True
-			
-
-
-
-		#if not super().validate(value):
-		#	return False
-
-		#if self.primary_key and value is not None:
-		#	raise PrimaryKeyValidationException
