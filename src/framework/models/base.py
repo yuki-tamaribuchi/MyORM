@@ -11,7 +11,7 @@ from framework.exceptions.models.fields import FieldNotInThisClassException, Pri
 class ModelBase(object):
 
 	def __init__(self, **kwargs):
-		ModelBase.objects = Objects(self.__class__)
+		ModelBase.objects = Objects(self)
 
 		self.is_saved = None
 
