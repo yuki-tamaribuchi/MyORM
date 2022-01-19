@@ -30,3 +30,14 @@ class StringField(FieldBase):
 				raise MaxLengthValidationException
 				
 		return True
+
+	
+	def field_sql(self):
+		super_sql = super().field_sql()
+
+		sql_template = "{max_length}"
+
+		sql = sql_template.format(
+			max_length = "VARCHAR(" + str(self.max_length) +") "
+		) + super_sql
+		return sql
