@@ -12,16 +12,15 @@ class ModelBase(object):
 
 	def __init__(self, **kwargs):
 		ModelBase.objects = Objects(self.__class__)
+
+		self.__set_fields_to_attr()
+		self.__create_fields_list()
 		
 		if kwargs:
 			
 			self.input_data = kwargs
-			self.is_saved = False
-
-			self.__set_fields_to_attr()
-			self.__create_fields_list()
 			self.set_values(self.input_data)
-			
+			self.is_saved = False
 		else:
 			self.is_saved = None
 
@@ -51,10 +50,10 @@ class ModelBase(object):
 
 
 	def set_values(self, input_data:dict):
-		if self.__check_fields_in_this_class():
+		if self.__check_fields_in_this_class(input_data=input_data):
 			for field in self.fields_list:
 				field_instalce = getattr(self, field)
-				if field in input_data: field_instalce.set_value(value=self.input_data[field])
+				if field in input_data: field_instalce.set_value(value=input_data[field])
 				else: field_instalce.set_value(value=None)
 			return True
 		return False
