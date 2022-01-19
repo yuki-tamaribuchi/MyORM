@@ -96,3 +96,15 @@ class ModelBase(object):
 		self.is_saved = True
 		print("Output from save(). :", self.__dict__)
 		return True
+
+
+	def delete(self):
+		print("Deleted.")
+		return True
+
+	
+	def get(self, where_caluse):
+		# where_calueからWHEREを生成してSELECT文を発行
+		# resultが1つなら値をセットして返す
+		# resultが2つ以上ならエラー
+		print("get called.: ", where_caluse)
