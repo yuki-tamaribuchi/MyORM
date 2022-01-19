@@ -1,12 +1,26 @@
 from models.users import Users
 
-user=Users(username="yuki")
-user.save()
-print(user.__dict__)
-print(user.username, user.lucky_number)
+
+#直接渡してデータをセットし、保存する方法
+#user=Users(username="yuki")
+#user.save()
 
 
-user2=Users(username="ken")
-print(user2.username, user2.lucky_number)
+#createメソッドにデータを渡し保存する方法
+#user = Users().objects.create(username="yuki", lucky_number=1)
+#print(user)
 
-print(user.username, user.lucky_number)
+
+#インスタンスのupdateメソッドで値を更新
+#user = Users().objects.create(username="yuki", lucky_number=1)
+#user.objects.update(lucky_number = 2)
+
+#インスタンスのdeleteメソッドで削除
+#user = Users().objects.create(username="yuki", lucky_number=1)
+#user.objects.delete()
+
+
+#インスタンスのgetメソッドでデータを取得
+user = Users().objects.create(username="yuki", lucky_number=1)
+
+user2 = Users().objects.get(username="yuki")
