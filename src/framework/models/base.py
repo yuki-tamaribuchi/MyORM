@@ -7,6 +7,8 @@ from framework.fields.base import FieldBase
 from framework.exceptions.models.fields import FieldNotInThisClassException, PrimaryKeyCannotUpdateException
 
 
+from framework.sqls.insert import generate_insert_sql
+
 
 class ModelBase(object):
 
@@ -93,8 +95,9 @@ class ModelBase(object):
 
 
 	def save(self):
+		sql = generate_insert_sql(self)
+		print("SQL: ", sql)
 		self.is_saved = True
-		print("Output from save(). :", self.__dict__)
 		return True
 
 
