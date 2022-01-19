@@ -16,3 +16,7 @@ class BrankValidationException(Exception):
 
 class MaxLengthValidationException(Exception):
 	pass
+
+
+class PrimaryKeyValidationException(Exception):
+	pass
