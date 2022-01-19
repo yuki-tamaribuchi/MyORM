@@ -8,6 +8,7 @@ from framework.exceptions.models.fields import FieldNotInThisClassException, Pri
 
 
 from framework.sqls.insert import generate_insert_sql
+from framework.sqls.create_table import generate_create_table_sql
 
 
 class ModelBase(object):
@@ -111,3 +112,7 @@ class ModelBase(object):
 		# resultが1つなら値をセットして返す
 		# resultが2つ以上ならエラー
 		print("get called.: ", where_caluse)
+
+
+	def create_table(self):
+		generate_create_table_sql(self.__class__)
