@@ -1,3 +1,3 @@
 class ObjectsBase(object):
-	def __init__(self, model_class):
-		self.model_class = model_class
+	def __init__(self, model_instance):
+		self.model_instance = model_instance
