@@ -3,9 +3,10 @@ from .base import ObjectsBase
 
 class ObjectsSelect(ObjectsBase):
 	def get(self, **kwargs):
-		where_caluse = kwargs
-		self.model_instance.get(where_caluse)
-		return self.model_instance
+		self.sql_dict["sql_mode"] = "select"
+		self.sql_dict["where"] = kwargs
+
+		return self
 
 
 	def all(self):
