@@ -43,6 +43,4 @@ def generate_create_table_sql(model_class):
 		table=table_name,
 		fields=fields_sql
 	)
-	print(sql)
-
 	return sql
