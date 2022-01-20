@@ -20,3 +20,7 @@ class MaxLengthValidationException(Exception):
 
 class PrimaryKeyValidationException(Exception):
 	pass
+
+
+class RelatedModelValidationException(Exception):
+	pass
