@@ -1,0 +1,2 @@
+class ColumnsNotSpecifiedException(Exception):
+	pass
