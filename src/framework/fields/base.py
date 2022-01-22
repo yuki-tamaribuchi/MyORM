@@ -35,10 +35,15 @@ class FieldBase(object):
 		return True
 
 
-	def set_value(self, value) ->bool:
+	def set_value(self, value, is_result_data) ->bool:
+		if is_result_data:
+			self.value = value
+			return True
+
+
 		if self.validate(value):
 			self.value = value
-		return True
+			return True
 	
 
 	def field_sql(self):
