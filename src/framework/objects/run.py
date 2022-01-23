@@ -28,8 +28,8 @@ class ObjectsRun(ObjectsBase):
 				if result_len>1:
 					raise ResultNotOneException
 				elif result_len == 1:
-					model_instances = self.__set_value_to_object(result)
-					return model_instances[0]
+					return result
+
 				else:
 					return None
 		else:
