@@ -13,11 +13,12 @@ class ObjectsRun(ObjectsBase):
 	def run(self):
 
 		if self.sql_dict["sql_mode"]  == "select":
-			sql = generate_select_sql(self.sql_dict)
+			sql = generate_select_sql(self)
 		elif self.sql_dict["sql_mode"] == "insert":
 			sql = generate_insert_sql(self.sql_dict)
 		else:
 			print('error')
+
 
 
 		if self.sql_dict["sql_mode"] == "select":
@@ -31,10 +32,8 @@ class ObjectsRun(ObjectsBase):
 					return model_instances[0]
 				else:
 					return None
-				
 		else:
 			result = execute(sql)
-
 		return result
 
 
