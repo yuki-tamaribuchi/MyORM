@@ -7,7 +7,9 @@ class ObjectsBase(object):
 			'select_mode': None,
 			'table': model_instance.__class__.__name__.lower(),
 			'options': None,
-			'columns': None,
+			'columns': {
+				"custom": None
+				},
 			'insert_columns': None,
 			'insert_values': None,
 			'join': None,
