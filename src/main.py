@@ -1,10 +1,6 @@
+from models.entry import Entry
 from models.users import Users
 
-
-from models.entry import Entry
-from framework.sqls.create_table import generate_create_table_sql
-
-generate_create_table_sql(Entry)
 
 
 #entry=Entry(writer=1, title="sample")
@@ -46,5 +42,25 @@ generate_create_table_sql(Entry)
 
 
 #インスタンスのgetメソッドでデータを取得
-#user = Users().objects.create(username="yuki", lucky_number=1)
-#user2 = Users().objects.get(username="yuki")
+#Users().objects.create(username="yuki")
+#user = Users().objects.get(username="yuki")
+
+
+
+
+#Users().objects.get(username="yuki", lucky_number=1).run()
+
+#getのみ、OK
+#user= Users().objects.get(username="yuki", lucky_number=1).run()
+#print(user.username)
+
+#get + カラム指定、エラー
+#user=Users().objects.get(username="yuki", lucky_number=1).columns("username", "lucky_number").run()
+#print(user)
+
+
+#Users().objects.create(username="yuki", lucky_number=1).run()
+
+
+entry = Entry().objects.get(title="sample").select_related("writer").run()
+print(entry)
