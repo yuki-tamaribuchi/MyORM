@@ -6,3 +6,4 @@ UPDATE_TEMPLATE = "UPDATE {table} SET {sets} {where} {order_by} {limit}"
 DELETE_TEMPLATE = "DELETE FROM {table} {where} {order_by} {limit}"
 
 WHERE_TEMPLATE = "WHERE  {where_clause}"
+JOIN_TEMPLATE = "LEFT JOIN {table} ON {condition} "
