@@ -1,5 +1,6 @@
 from .columns import generate_columns
 from .where import generate_where_sql
+from .join import generate_join_sql
 from .templates import SELECT_TEMPLATE
 
 
@@ -19,7 +20,7 @@ def generate_select_sql(objects_instance):
 
 	
 	if objects_instance.sql_dict["join"]:
-		join = ""
+		join = generate_join_sql(objects_instance.sql_dict["join"])
 	else:
 		join = ""
 
