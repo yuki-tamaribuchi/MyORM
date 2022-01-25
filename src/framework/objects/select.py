@@ -6,7 +6,12 @@ class ObjectsSelect(ObjectsBase):
 		self.sql_dict["sql_mode"] = "select"
 		self.sql_dict["select_mode"] = "get"
 		self.sql_dict["where"] = kwargs
-		self.sql_dict["columns"][self.model_instance.__class__.__name__.lower()] = list(self.model_instance.fields_dict.keys())
+
+		columns = list(self.model_instance.fields_dict.items())
+		self.sql_dict["columns"].append({
+			"table": self.model_instance.__class__,
+			"columns": columns
+		})
 		return self
 
 
