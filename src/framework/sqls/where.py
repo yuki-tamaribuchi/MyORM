@@ -1,21 +1,18 @@
 from .templates import WHERE_TEMPLATE
 
 
-def generate_where_sql(where_clause):
+def generate_where_sql(all_filter_conditon_arr):
 
-	where_arr = []
+	filter_arr = []
 
-	for k, v in where_clause.items():
-
-		where_arr.append("{} = \"{}\"".format(k, str(v)))
+	for filter_condition in all_filter_conditon_arr:
+		for k, v in filter_condition.items():
+			filter_arr.append("{} = \"{}\"".format(k, v["field_value"]))
 	
+
+	filter_sql = " AND ".join(filter_arr)
 	
-
-	where_clause_sql = " AND ".join(where_arr)
-
 	sql = WHERE_TEMPLATE.format(
-		where_clause=where_clause_sql
+		where_clause=filter_sql
 	)
-
 	return sql
-	
