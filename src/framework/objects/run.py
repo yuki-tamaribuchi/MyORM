@@ -20,7 +20,6 @@ class ObjectsRun(ObjectsBase):
 			print('error')
 
 
-
 		if self.sql_dict["sql_mode"] == "select":
 			if self.sql_dict["select_mode"] == "get":
 				result = fetch(sql)
@@ -32,6 +31,9 @@ class ObjectsRun(ObjectsBase):
 
 				else:
 					return None
+			elif self.sql_dict["select_mode"] == "filter":
+				result = fetch(sql)
+				return result
 		else:
 			result = execute(sql)
 		return result
