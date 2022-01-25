@@ -8,7 +8,7 @@ def generate_insert_sql(sql_dict):
 
 
 	insert_sql = INSERT_TEMPLATE.format(
-		table=sql_dict["table"],
+		table=sql_dict["table"].__name__.lower(),
 		columns=columns,
 		values=values
 	)
