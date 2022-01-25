@@ -7,27 +7,28 @@ class SelectRelated(ObjectsBase):
 	
 	def select_related(self, *args):
 
-		table_names = args
+		related_data = args
 
-		for table in table_names:
-			if "__" in table:
+		for data in related_data:
+			if "__" in data:
 				pass
 			else:
 				left_table = self.sql_dict["table"]
-				right_table = self.__get_table(table)
-				right_table_name = right_table.__name__.lower()
-				table = table + "_id"
+				right_table = self.__get_table(data)
+
 				self.sql_dict["join"].append(
 					{
-						'left_table': left_table,
-						'right_table': right_table_name,
-						'column': table
+						"left_table": left_table,
+						"right_table": right_table,
 					}
 				)
 
-				right_table_columns = list(right_table().__dict__["fields_dict"].keys())
+				right_table_columns = list(right_table().fields_dict.items())
 
-				self.sql_dict["columns"][right_table_name] = right_table_columns
+				self.sql_dict["columns"].append({
+					'table': right_table,
+					'columns': right_table_columns
+				})
 
 		return self
 
