@@ -5,14 +5,12 @@ class ObjectsBase(object):
 		self.sql_dict = {
 			'sql_mode': None,
 			'select_mode': None,
-			'table': model_instance.__class__.__name__.lower(),
+			'table': model_instance.__class__,
 			'options': None,
-			'columns': {
-				"custom": None
-				},
+			'columns': [],
 			'insert_columns': None,
 			'insert_values': None,
-			'join': None,
+			'join': [],
 			'where': None,
 			'group_by': None,
 			'having': None,
