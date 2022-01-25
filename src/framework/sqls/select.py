@@ -47,7 +47,7 @@ def generate_select_sql(objects_instance):
 	select_sql = SELECT_TEMPLATE.format(
 		options=options,
 		columns=columns,
-		table=objects_instance.sql_dict["table"],
+		table=objects_instance.sql_dict["table"].__name__.lower(),
 		join=join,
 		where=where,
 		order_by=order_by,
