@@ -1,16 +1,17 @@
 from .templates import UPDATE_TEMPLATE
 
 
+from .where import generate_where_sql
+from framework.exceptions.objects.base import UpdateSetsNotFoundException
 def generate_update_sql(sql_dict):
 	
 	if sql_dict["update_sets"]:
-		sets = ""
+		sets = ", ".join(sql_dict["update_sets"])
 	else:
-		pass
-		#raise err
+		raise UpdateSetsNotFoundException
 
 	if sql_dict["where"]:
-		where = ""
+		where = generate_where_sql(sql_dict["where"])
 	else:
 		where = ""
 
@@ -24,9 +25,9 @@ def generate_update_sql(sql_dict):
 	else:
 		limit = ""
 
-	
+
 	update_sql = UPDATE_TEMPLATE.format(
-		table=sql_dict["table"],
+		table=sql_dict["table"].__name__.lower(),
 		sets=sets,
 		where=where,
 		order_by=order_by,
