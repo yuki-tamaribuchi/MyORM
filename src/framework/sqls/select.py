@@ -1,6 +1,8 @@
 from .columns import generate_columns
 from .where import generate_where_sql
 from .join import generate_join_sql
+from .order_by import generate_orderby_sql
+from .limit import generate_limit_sql
 from .templates import SELECT_TEMPLATE
 
 
@@ -30,7 +32,7 @@ def generate_select_sql(objects_instance):
 		where = ""
 
 	if objects_instance.sql_dict["order_by"]:
-		order_by = ""
+		order_by = generate_orderby_sql(objects_instance.sql_dict)
 	else:
 		order_by = ""
 
@@ -40,7 +42,7 @@ def generate_select_sql(objects_instance):
 		having = ""
 
 	if objects_instance.sql_dict["limit"]:
-		limit = ""
+		limit = generate_limit_sql(objects_instance.sql_dict["limit"])
 	else:
 		limit = ""
 
