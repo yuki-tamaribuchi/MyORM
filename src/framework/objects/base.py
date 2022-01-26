@@ -15,6 +15,7 @@ class ObjectsBase(object):
 			'group_by': None,
 			'having': None,
 			'order_by': None,
+			'sort': None,
 			'limit': None,
 			'update_sets': None
 		}
