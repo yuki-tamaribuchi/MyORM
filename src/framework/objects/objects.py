@@ -4,7 +4,7 @@ from .delete import ObjectsDelete
 from .select import ObjectsSelect
 from .filter import ObjectsFilter
 from .order_by import ObjectsOrderBy
-from .reverse import ObjectsRevese
+from .reverse import ObjectsReverse
 from .limit import ObjectsLimit
 from .columns import ColumnsObject
 from .select_related import SelectRelated
@@ -19,7 +19,7 @@ class Objects(
 	ObjectsSelect,
 	ObjectsFilter,
 	ObjectsOrderBy,
-	ObjectsRevese,
+	ObjectsReverse,
 	ObjectsLimit,
 	ColumnsObject,
 	SelectRelated,
