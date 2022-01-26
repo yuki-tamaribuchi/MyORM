@@ -1,24 +1,19 @@
-from platformdirs import user_cache_dir
 from models.entry import Entry
 from models.users import Users
 
 
 
-#entry=Entry(writer=1, title="sample")
-#entry.save()
-#print(entry.__dict__)
-
-
-
-
 #動作確認済分
+
 
 #テーブル作成 (作成するテーブルをmodel.__init__内のmodelsリストに追加しておく)
 #from framework.operates.create_table import create_all_table
 #create_all_table()
 
+
 #createメソッドで作成
-#user = Users().objects.create(username="yuki", lucky_number=1)
+#user = Users().objects.create(username="yuki", lucky_number=1).run()
+#entry = Entry().objects.create(title="sample2", writer=4).run()
 
 
 #インスタンスのgetメソッドでデータを取得
@@ -31,14 +26,14 @@ from models.users import Users
 #print(user)
 
 
-user = Users().objects.filter({"username":"yuki"},{"username":"sample"}).run()
-print(user)
+#get + 関連テーブル取得
+#entry = Entry().objects.get(title="sample").select_related("writer").run()
+#print(entry)
 
 
 #ANDでフィルター
 #entry = Entry().objects.filter(writer="3", title="sample").run()
 #print(entry)
-
 
 
 #関連テーブルも同時にget
@@ -47,23 +42,51 @@ print(user)
 #print(entry)
 
 
+#ANDフィルター＋関連テーブル取得
+#entry = Entry().objects.filter(writer="3", title="sample").select_related("writer").run()
+#print(entry)
+
+
+#delete + フィルター
+#ただし、フィルターを指定シない場合は全削除になる
+#Entry().objects.delete().filter(id=1).run()
+
+
+#update + フィルター
+#Users().objects.update(lucky_number=3).filter(username="yuki").run()
+
+
+#フィルター + オーダー(asc)
+#users = Users().objects.filter(lucky_number=3).order_by("id").run()
+#print(users)
+
+
+#フィルター + オーダー(desc)
+#users = Users().objects.filter(lucky_number=3).order_by("id").reverse().run()
+#print(users)
+
+
+#フィルター + リミット
+#users = Users().objects.filter(lucky_number=3).limit(10).run()
+#print(users)
+
+
+#エラー発生分
+
+
+
+#getに関連テーブルのカラムを指定して取得
+#entry = Entry().objects.get(lucky_number=1).select_related("writer").run()
+#print(entry)
 
 
 
 
 
+#サンプルファイル
 
-
-
-#以下SQL発行は未実装
-
-
-#インスタンスのupdateメソッドで値を更新
-#user = Users().objects.create(username="yuki", lucky_number=1)
-#Users().objects.update(lucky_number = 2).filter(username="yuki", lucky_number=1).run()
-
-#Users().objects.update(lucky_number = 2).filter({"username":"yuki"},{"username":"sample"}).run()
-
-
-#インスタンスのdeleteメソッドで削除
-#user.objects.delete()
+#from framework.operates.create_table import create_all_table
+#from samples.insert import insert_users, insert_entry
+#create_all_table()
+#insert_users(1000)
+#insert_entry(1000)
