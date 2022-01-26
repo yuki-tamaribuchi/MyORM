@@ -9,12 +9,8 @@ class ObjectsFilter(ObjectsBase):
 	def filter(self, *args, **kwargs):
 		all_filter_condition_arr = []
 
-		if args:
-			filter_conditions = args
-
-		elif kwargs:
+		if kwargs:
 			filter_contidion = kwargs
-
 			filter_contidion_dict = {}
 			
 			
@@ -25,6 +21,7 @@ class ObjectsFilter(ObjectsBase):
 					filter_field_name = filter_field_name + "_id"
 
 				filter_contidion_dict[filter_field_name] = {
+					"table_name": self.model_instance.__class__.__name__.lower(),
 					"field_instance": field_instance,
 					"field_value": filter_field_value
 				}
@@ -48,7 +45,6 @@ class ObjectsFilter(ObjectsBase):
 				"table": self.model_instance.__class__,
 				"columns": list(self.model_instance.fields_dict.items())
 			})
-		
 
 		return self
 
