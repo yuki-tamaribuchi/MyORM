@@ -3,6 +3,12 @@ from .update import ObjectsUpdate
 from .delete import ObjectsDelete
 from .select import ObjectsSelect
 from .filter import ObjectsFilter
+from .order_by import ObjectsOrderBy
+from .reverse import ObjectsRevese
+from .limit import ObjectsLimit
+from .columns import ColumnsObject
+from .select_related import SelectRelated
+from .run import ObjectsRun
 
 
 
@@ -11,6 +17,12 @@ class Objects(
 	ObjectsUpdate,
 	ObjectsDelete,
 	ObjectsSelect,
-	ObjectsFilter
+	ObjectsFilter,
+	ObjectsOrderBy,
+	ObjectsRevese,
+	ObjectsLimit,
+	ColumnsObject,
+	SelectRelated,
+	ObjectsRun
 	):
 	pass
