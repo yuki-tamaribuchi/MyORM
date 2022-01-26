@@ -7,3 +7,5 @@ DELETE_TEMPLATE = "DELETE FROM {table} {where} {order_by} {limit}"
 
 WHERE_TEMPLATE = "WHERE  {where_clause}"
 JOIN_TEMPLATE = "LEFT JOIN {table} ON {condition} "
+ORDER_BY_TEMPLATE = "ORDER BY {order_by_clause}"
+LIMIT_TEMPLATE = "LIMIT {limit}"
