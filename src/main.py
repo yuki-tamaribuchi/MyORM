@@ -90,3 +90,17 @@ from models.users import Users
 #create_all_table()
 #insert_users(1000)
 #insert_entry(1000)
+
+#user = Users().objects.filter(username="sample100").run()
+#print(user)
+
+
+#entry = Entry().objects.filter(title="sample1").select_related("writer").run()
+#print(entry)
+
+#entry = Entry().objects.get(title="sample1").select_related("writer").run()
+#print(entry)
+user=Users().objects.get(username="sample1").run()
+
+entry = Entry().objects.create(title="sample0000", writer=user["Users"]["id"]).run()
+print(entry)
