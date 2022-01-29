@@ -27,19 +27,58 @@ class ObjectsRun(ObjectsBase):
 
 		if self.sql_dict["sql_mode"] == "select":
 			if self.sql_dict["select_mode"] == "get":
-				result = fetch(sql)
-				result_len = len(result)
-				if result_len>1:
+				results = fetch(sql)
+				results_len = len(results)
+				if results_len>1:
 					raise ResultNotOneException
-				elif result_len == 1:
-					return result
-
+				elif results_len == 1:
+					pass
 				else:
-					return None
+					results = None
 
 			elif self.sql_dict["select_mode"] in ["filter", "all"]:
-				result = fetch(sql)
-				return result
+				results = fetch(sql)
+			
+			return self.__create_result_dict(results)
+
+
+		elif self.sql_dict["sql_mode"] == "insert":
+			return execute(sql, True)
+			
 		else:
-			result = execute(sql)
-		return result
+			return execute(sql, False)
+
+
+
+	def __create_result_dict(self, results):
+		
+		if self.sql_dict["sql_mode"] == "select":
+			return self.__set_result_to_dict(results)
+
+
+
+	def __create_table_columns_dict(self):
+		table_columns_dict = {}
+
+		for table in self.sql_dict["columns"]:
+			table_name = table["table"].__name__
+			table_columns_dict[table_name] = {}
+			
+			for column in table["columns"]:
+				table_columns_dict[table_name][column[0]] = None
+
+		return table_columns_dict
+
+
+	
+	def __set_result_to_dict(self, results):
+		table_columns_dict = self.__create_table_columns_dict()
+
+		i=0
+		
+		for result in results:
+			for table_name, column_names in table_columns_dict.items():
+				for column_name in column_names:
+					table_columns_dict[table_name][column_name] = result[i]
+					i+=1
+		return table_columns_dict
