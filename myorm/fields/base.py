@@ -1,4 +1,4 @@
-from framework.exceptions.fields.base import NotNullValidationException, DataTypeValidationException
+from myorm.exceptions.fields.base import NotNullValidationException, DataTypeValidationException
 
 
 

@@ -1,7 +1,7 @@
 from .base import ObjectsBase
 
-from framework.fields.fields.foreign import ForeignField
-from framework.exceptions.objects.base import ColumnsNotSpecifiedException, ColumnNotFoundException
+from myorm.fields.fields.foreign import ForeignField
+from myorm.exceptions.objects.base import ColumnsNotSpecifiedException, ColumnNotFoundException
 
 class ColumnsObject(ObjectsBase):
 	def columns(self, *args):

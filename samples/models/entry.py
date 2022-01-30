@@ -1,6 +1,6 @@
-from framework.models.model import Model
-from framework.fields import IntegerField, StringField, ForeignField
-from framework.models import CASCADE
+from myorm.models.model import Model
+from myorm.fields import IntegerField, StringField, ForeignField
+from myorm.models import CASCADE
 
 from .users import Users
 

@@ -1,9 +1,9 @@
 from .templates import CREATE_TABLE_TEMPLATE as template
 
-from framework.fields.base import FieldBase
+from myorm.fields.base import FieldBase
 
 def generate_create_table_sql(model_class):
-	from framework.fields.fields.foreign import ForeignField
+	from myorm.fields.fields.foreign import ForeignField
 
 	table_name = model_class.__name__.lower()
 

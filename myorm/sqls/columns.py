@@ -1,4 +1,4 @@
-from framework.fields.fields.foreign import ForeignField
+from myorm.fields.fields.foreign import ForeignField
 
 
 def generate_columns(objects_instance):

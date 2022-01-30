@@ -1,6 +1,6 @@
 from .base import ObjectsBase
 
-from framework.exceptions.objects.base import SelectRelatedTableNotFoundException
+from myorm.exceptions.objects.base import SelectRelatedTableNotFoundException
 
 
 class SelectRelated(ObjectsBase):

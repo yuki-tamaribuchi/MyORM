@@ -1,5 +1,5 @@
-from framework.models import Model
-from framework.fields import StringField, IntegerField
+from myorm.models import Model
+from myorm.fields import StringField, IntegerField
 
 class Users(Model):
 

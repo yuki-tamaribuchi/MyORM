@@ -1,8 +1,8 @@
 from attr import field
 from .base import ObjectsBase
 
-from framework.fields.fields.foreign import ForeignField
-from framework.exceptions.objects.base import FilterConditionNotSpecifiedException, FilterColumnNotFoundException
+from myorm.fields.fields.foreign import ForeignField
+from myorm.exceptions.objects.base import FilterConditionNotSpecifiedException, FilterColumnNotFoundException
 
 
 class ObjectsFilter(ObjectsBase):

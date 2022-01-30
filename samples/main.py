@@ -7,7 +7,7 @@ from models.users import Users
 
 
 #テーブル作成 (作成するテーブルをmodel.__init__内のmodelsリストに追加しておく)
-#from framework.operates.create_table import create_all_table
+#from myorm.operates.create_table import create_all_table
 #create_all_table()
 
 
@@ -85,7 +85,7 @@ from models.users import Users
 
 #サンプルファイル
 
-#from framework.operates.create_table import create_all_table
+#from myorm.operates.create_table import create_all_table
 #from samples.insert import insert_users, insert_entry
 #create_all_table()
 #insert_users(1000)
@@ -102,5 +102,5 @@ from models.users import Users
 #print(entry)
 user=Users().objects.get(username="sample1").run()
 
-entry = Entry().objects.create(title="sample0000", writer=user["Users"]["id"]).run()
-print(entry)
+#entry = Entry().objects.create(title="sample0000", writer=user["Users"]["id"]).run()
+#print(entry)

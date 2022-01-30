@@ -1,14 +1,14 @@
 from copy import copy
 
-from framework.objects import Objects
-from framework.fields import IntegerField
-from framework.fields.base import FieldBase
+from myorm.objects import Objects
+from myorm.fields import IntegerField
+from myorm.fields.base import FieldBase
 
-from framework.exceptions.models.fields import FieldNotInThisClassException, PrimaryKeyCannotUpdateException
+from myorm.exceptions.models.fields import FieldNotInThisClassException, PrimaryKeyCannotUpdateException
 
 
-from framework.sqls.insert import generate_insert_sql
-from framework.sqls.create_table import generate_create_table_sql
+from myorm.sqls.insert import generate_insert_sql
+from myorm.sqls.create_table import generate_create_table_sql
 
 
 class ModelBase(object):

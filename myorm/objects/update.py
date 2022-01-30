@@ -1,6 +1,6 @@
 from .base import ObjectsBase
 
-from framework.exceptions.objects.base import UpdateDataNotSpecifiedException
+from myorm.exceptions.objects.base import UpdateDataNotSpecifiedException
 
 
 class ObjectsUpdate(ObjectsBase):

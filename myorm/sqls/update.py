@@ -2,7 +2,7 @@ from .templates import UPDATE_TEMPLATE
 
 
 from .where import generate_where_sql
-from framework.exceptions.objects.base import UpdateSetsNotFoundException
+from myorm.exceptions.objects.base import UpdateSetsNotFoundException
 def generate_update_sql(sql_dict):
 	
 	if sql_dict["update_sets"]:

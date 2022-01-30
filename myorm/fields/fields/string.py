@@ -1,6 +1,6 @@
 from ..base import FieldBase
 
-from framework.exceptions.fields.base import BrankValidationException, MaxLengthValidationException
+from myorm.exceptions.fields.base import BrankValidationException, MaxLengthValidationException
 
 
 class StringField(FieldBase):

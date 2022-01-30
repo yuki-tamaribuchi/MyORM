@@ -1,13 +1,13 @@
 from .base import ObjectsBase
-from framework.connection.execute import execute
-from framework.connection.fetch import fetch
+from myorm.connection.execute import execute
+from myorm.connection.fetch import fetch
 
-from framework.sqls.select import generate_select_sql
-from framework.sqls.insert import generate_insert_sql
-from framework.sqls.delete import generate_delete_sql
-from framework.sqls.update import generate_update_sql
+from myorm.sqls.select import generate_select_sql
+from myorm.sqls.insert import generate_insert_sql
+from myorm.sqls.delete import generate_delete_sql
+from myorm.sqls.update import generate_update_sql
 
-from framework.exceptions.objects.base import ResultNotOneException
+from myorm.exceptions.objects.base import ResultNotOneException
 
 
 class ObjectsRun(ObjectsBase):

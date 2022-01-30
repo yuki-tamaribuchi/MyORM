@@ -1,6 +1,6 @@
 from .base import ObjectsBase
 
-from framework.exceptions.objects.base import LimitNumberMustBePositiveException
+from myorm.exceptions.objects.base import LimitNumberMustBePositiveException
 
 
 class ObjectsLimit(ObjectsBase):

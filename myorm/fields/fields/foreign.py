@@ -1,8 +1,8 @@
 from ..base import FieldBase
 
-from framework.exceptions.fields.base import RelatedModelValidationException
+from myorm.exceptions.fields.base import RelatedModelValidationException
 
-from framework.models.on_delete import OnDeleteBase
+from myorm.models.on_delete import OnDeleteBase
 
 
 class ForeignField(FieldBase):
@@ -19,7 +19,7 @@ class ForeignField(FieldBase):
 		**kwargs
 		) -> None:
 
-		from framework.models.base import ModelBase
+		from myorm.models.base import ModelBase
 
 
 		super().__init__(null, unique, *args, **kwargs)

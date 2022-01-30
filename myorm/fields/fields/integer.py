@@ -1,6 +1,6 @@
 from ..base import FieldBase
 
-from framework.exceptions.fields.base import PrimaryKeyValidationException, NotNullValidationException
+from myorm.exceptions.fields.base import PrimaryKeyValidationException, NotNullValidationException
 
 
 

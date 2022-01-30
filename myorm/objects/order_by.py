@@ -1,6 +1,6 @@
 from .base import ObjectsBase
 
-from framework.exceptions.objects.base import OrderByKeyNotSpecifiedException
+from myorm.exceptions.objects.base import OrderByKeyNotSpecifiedException
 
 class ObjectsOrderBy(ObjectsBase):
 	def order_by(self, *args):

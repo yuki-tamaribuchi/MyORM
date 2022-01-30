@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import errorcode
 
-from framework.exceptions.connection.base import DatabaseCreatedException
+from myorm.exceptions.connection.base import DatabaseCreatedException
 
 from settings.databases import DATABASES_LIST
 

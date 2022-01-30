@@ -1,5 +1,5 @@
-from framework.sqls.create_table import generate_create_table_sql
-from framework.connection.execute import execute
+from myorm.sqls.create_table import generate_create_table_sql
+from myorm.connection.execute import execute
 
 from models import models
 

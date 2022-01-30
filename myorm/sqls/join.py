@@ -1,6 +1,6 @@
 from .templates import JOIN_TEMPLATE
 
-from framework.fields.fields.foreign import ForeignField
+from myorm.fields.fields.foreign import ForeignField
 
 def generate_join_sql(join_arr):
 	right_table_name_arr = []
