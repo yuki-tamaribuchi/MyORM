@@ -72,13 +72,18 @@ class ObjectsRun(ObjectsBase):
 
 	
 	def __set_result_to_dict(self, results):
-		table_columns_dict = self.__create_table_columns_dict()
-
-		i=0
+		
+		results_dict_arr = []
 		
 		for result in results:
+			table_columns_dict = self.__create_table_columns_dict()
+			i=0
+
 			for table_name, column_names in table_columns_dict.items():
 				for column_name in column_names:
 					table_columns_dict[table_name][column_name] = result[i]
 					i+=1
-		return table_columns_dict
+
+			results_dict_arr.append(table_columns_dict)
+
+		return results_dict_arr
