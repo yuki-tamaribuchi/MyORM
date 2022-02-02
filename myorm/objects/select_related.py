@@ -3,7 +3,7 @@ from .base import ObjectsBase
 from myorm.exceptions.objects.base import SelectRelatedTableNotFoundException
 
 
-class SelectRelated(ObjectsBase):
+class ObjectsSelectRelated(ObjectsBase):
 	
 	def select_related(self, *args):
 
