@@ -6,8 +6,8 @@ from .filter import ObjectsFilter
 from .order_by import ObjectsOrderBy
 from .reverse import ObjectsReverse
 from .limit import ObjectsLimit
-from .columns import ColumnsObject
-from .select_related import SelectRelated
+from .columns import ObjectsColumns
+from .select_related import ObjectsSelectRelated
 from .run import ObjectsRun
 
 
@@ -21,8 +21,8 @@ class Objects(
 	ObjectsOrderBy,
 	ObjectsReverse,
 	ObjectsLimit,
-	ColumnsObject,
-	SelectRelated,
+	ObjectsColumns,
+	ObjectsSelectRelated,
 	ObjectsRun
 	):
 	pass

@@ -3,7 +3,7 @@ from .base import ObjectsBase
 
 from myorm.exceptions.objects.base import ColumnsNotSpecifiedException, ColumnNotFoundException
 
-class ColumnsObject(ObjectsBase):
+class ObjectsColumns(ObjectsBase):
 	def columns(self, *args):
 		if args:
 			columns_arr = self.__create_columns(args)
