@@ -13,7 +13,7 @@ class ObjectsUpdate(ObjectsBase):
 
 			for k, v in update_data.items():
 				update_sets_arr.append(
-					"{} = {}".format(k, v)
+					"{} = \"{}\"".format(k, v)
 				)
 
 			self.sql_dict["update_sets"] = update_sets_arr
