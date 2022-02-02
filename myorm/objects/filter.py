@@ -1,12 +1,13 @@
 from attr import field
 from .base import ObjectsBase
 
-from myorm.fields.fields.foreign import ForeignField
 from myorm.exceptions.objects.base import FilterConditionNotSpecifiedException, FilterColumnNotFoundException
 
 
 class ObjectsFilter(ObjectsBase):
 	def filter(self, *args, **kwargs):
+		from myorm.fields.fields.foreign import ForeignField
+		
 		all_filter_condition_arr = []
 
 		if kwargs:

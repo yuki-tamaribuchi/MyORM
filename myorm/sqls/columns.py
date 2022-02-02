@@ -1,7 +1,5 @@
-from myorm.fields.fields.foreign import ForeignField
-
-
 def generate_columns(objects_instance):
+	from myorm.fields.fields.foreign import ForeignField
 
 	columns_arr = []
 

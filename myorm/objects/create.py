@@ -2,13 +2,14 @@ from datetime import datetime
 
 from .base import ObjectsBase
 
-from myorm.fields.fields.foreign import ForeignField
-from myorm.fields.fields.datetime import DatetimeField
+
 from myorm.exceptions.objects.base import CreateDataNotFoundException, FieldNotInThisClassException
 
 
 class ObjectsCreate(ObjectsBase):
 	def create(self, **kwargs):
+		from myorm.fields.fields.foreign import ForeignField
+		from myorm.fields.fields.datetime import DatetimeField
 
 		insert_columns_arr = []
 		insert_values_arr = []

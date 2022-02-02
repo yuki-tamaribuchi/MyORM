@@ -1,6 +1,6 @@
 from .base import ObjectsBase
 
-from myorm.fields.fields.foreign import ForeignField
+
 from myorm.exceptions.objects.base import ColumnsNotSpecifiedException, ColumnNotFoundException
 
 class ColumnsObject(ObjectsBase):
@@ -23,6 +23,8 @@ class ColumnsObject(ObjectsBase):
 				
 
 	def __get_columns_instance(self, column, model_fields_dict):
+		from myorm.fields.fields.foreign import ForeignField
+
 		for field_name, field_instance in model_fields_dict.items():
 			if isinstance(field_instance, ForeignField):
 				field_name = field_name + "_id"

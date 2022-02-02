@@ -1,12 +1,13 @@
 from .base import ObjectsBase
 
-from myorm.fields.fields.foreign import ForeignField
+
 from myorm.exceptions.objects.base import GetConditonNotSpecifiedException, GetColumnNotFoundException
 
 
 
 class ObjectsSelect(ObjectsBase):
 	def get(self, **kwargs):
+		from myorm.fields.fields.foreign import ForeignField
 
 		if kwargs:
 

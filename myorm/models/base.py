@@ -8,7 +8,7 @@ from myorm.exceptions.models.fields import FieldNotInThisClassException, Primary
 
 
 from myorm.sqls.insert import generate_insert_sql
-from myorm.sqls.create_table import generate_create_table_sql
+
 
 
 class ModelBase(object):
@@ -35,15 +35,7 @@ class ModelBase(object):
 		return True
 
 
-
-	def set_values(self, input_data:dict, is_result_data:bool =False):
-		for field in self.fields_dict:
-			field_instalce = getattr(self, field)
-			if field in input_data: field_instalce.set_value(value=input_data[field], is_result_data=is_result_data)
-			else: field_instalce.set_value(value=None)
-		return True
-
-
-
 	def create_table(self):
+		from myorm.sqls.create_table import generate_create_table_sql
+
 		generate_create_table_sql(self.__class__)

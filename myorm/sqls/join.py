@@ -1,8 +1,9 @@
 from .templates import JOIN_TEMPLATE
 
-from myorm.fields.fields.foreign import ForeignField
 
 def generate_join_sql(join_arr):
+	from myorm.fields.fields.foreign import ForeignField
+
 	right_table_name_arr = []
 	condition_arr = []
 
