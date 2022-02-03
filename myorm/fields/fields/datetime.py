@@ -9,13 +9,15 @@ class DatetimeField(FieldBase):
 	def __init__(
 		self,
 		null:bool,
-		auto_add:bool,
+		auto_now:bool,
+		auto_update:bool,
 		*args,
 		**kwargs
 	):
 
 		super().__init__(null, unique=False, *args, **kwargs)
-		self.auto_add = auto_add
+		self.auto_now = auto_now
+		self.auto_update = auto_update
 
 	def field_sql(self):
 		super_sql = super().field_sql()
