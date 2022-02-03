@@ -26,10 +26,10 @@ class ObjectsCreate(ObjectsBase):
 		for field_name, field_instance in model_fields_dict.items():
 			if isinstance(field_instance, DatetimeField):
 				if field_name not in insert_data and not field_instance.null:
-					if field_instance.auto_add:
-						insert_data["datetime"] = datetime.now()
+					if field_instance.auto_now:
+						insert_data[field_name] = datetime.now()
 					else:
-						insert_data["datetime"] = None
+						insert_data[field_name] = None
 
 
 			if field_name in insert_data:
