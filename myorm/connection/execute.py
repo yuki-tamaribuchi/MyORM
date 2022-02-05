@@ -19,6 +19,6 @@ def execute(sql, is_insert)->bool:
 			
 			except	mysql.connector.Error as err:
 				if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
-					print('Table already exists.')
+					pass
 				else:
 					raise err
