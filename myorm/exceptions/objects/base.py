@@ -39,3 +39,9 @@ class OrderByKeyNotSpecifiedException(Exception):
 
 class LimitNumberMustBePositiveException(Exception):
 	pass
+
+class SQLModeNotAcceptableException(Exception):
+	pass
+
+class SelectModeNotAcceptableException(Exception):
+	pass
