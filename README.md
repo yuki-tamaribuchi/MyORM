@@ -49,11 +49,23 @@ Python製、力技自作ORMです。
 	`framework.operates.create_table`内の`create_all_table`関数を呼び出すことでSQLが発行されてモデルがRDBに作成される。
 
 	例)
+	from myorm.models.model import Model
+	from myorm.fields import IntegerField, StringField, ForeignField
+	from myorm.models import CASCADE
+
 	class Users(Model):
 
 		id = IntegerField(null=False, unique=True, primary_key=True)
 		username = StringField(max_length=30, null=False, unique=True, brank=False)
 		password = StringField(max_length=20, null=False, unique=False, brank=False)
+
+	
+	class Entry(Model):
+
+		id = IntegerField(null=False, unique=True, primary_key=True)
+		title = StringField(max_length=30, null=False, unique=False, brank=False)
+		content = StringField(max_length=2000, null=False, unique=False, brank=True)
+		writer = ForeignField(Users, on_delete=CASCADE, null=False)
 
 
 <br>
@@ -137,3 +149,9 @@ Python製、力技自作ORMです。
 ## クラス図
 
 ![](.github/readme_resources/myorm-model.drawio.png)
+
+<br>
+
+## シーケンス図
+
+![](.github/readme_resources/myorm-sequence.drawio.png)
