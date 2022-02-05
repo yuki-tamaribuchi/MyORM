@@ -3,7 +3,7 @@ from mysql.connector import errorcode
 
 from myorm.exceptions.connection.base import DatabaseCreatedException
 
-from settings.databases import DATABASES_LIST
+from src.settings.databases import DATABASES_LIST
 
 
 class DBConnection:
