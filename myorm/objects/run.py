@@ -1,3 +1,4 @@
+from types import NoneType
 from .base import ObjectsBase
 from myorm.connection.execute import execute
 from myorm.connection.fetch import fetch
@@ -7,7 +8,7 @@ from myorm.sqls.insert import generate_insert_sql
 from myorm.sqls.delete import generate_delete_sql
 from myorm.sqls.update import generate_update_sql
 
-from myorm.exceptions.objects.base import ResultNotOneException
+from myorm.exceptions.objects.base import ResultNotOneException, SQLModeNotAcceptableException, SelectModeNotAcceptableException
 
 
 class ObjectsRun(ObjectsBase):
@@ -22,7 +23,7 @@ class ObjectsRun(ObjectsBase):
 		elif self.sql_dict["sql_mode"] == "update":
 			sql = generate_update_sql(self.sql_dict)
 		else:
-			print('error')
+			raise SQLModeNotAcceptableException
 
 
 		if self.sql_dict["sql_mode"] == "select":
@@ -38,6 +39,9 @@ class ObjectsRun(ObjectsBase):
 
 			elif self.sql_dict["select_mode"] in ["filter", "all"]:
 				results = fetch(sql)
+
+			else:
+				raise SelectModeNotAcceptableException
 			
 			return self.__create_result_dict(results)
 
@@ -74,6 +78,10 @@ class ObjectsRun(ObjectsBase):
 	def __set_result_to_dict(self, results):
 		
 		results_dict_arr = []
+
+		if type(results) is NoneType:
+			return results_dict_arr
+
 		
 		for result in results:
 			table_columns_dict = self.__create_table_columns_dict()
